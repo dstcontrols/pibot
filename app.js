@@ -2,6 +2,7 @@ var restify = require('restify');
 var builder = require('botbuilder');
 
 var server = restify.createServer();
+var port = process.env.PORT || 8080;
 
 var helloBot = new builder.BotConnectorBot();
 helloBot.add('/', new builder.CommandDialog()
@@ -36,6 +37,6 @@ helloBot.add('/profile', [
 // server.use(helloBot.verifyBotFramework({ appId: 'you id', appSecret: 'your secret' }));
 server.post('/v1/messages', helloBot.listen());
 
-server.listen(80, function () {
+server.listen(port, function () {
   console.log('%s listening to %s', server.name, server.url);
 });
