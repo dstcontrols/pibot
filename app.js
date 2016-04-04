@@ -36,5 +36,4 @@ server.post('/v1/messages',  piBot.listen());
 
 server.listen(8080, function () {
   console.log('%s listening to %s', server.name, server.url);
-  piBot.stdout('%s listening to %s', server.name, server.url);
 });
