@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/dstcontrols/pibot/issues"
   },
-  "homepage": "https://github.com/dstcontrols/pibot#readme"
+  "homepage": "https://github.com/dstcontrols/pibot#readme",
+  "dependencies": {
+    "botbuilder": "^0.6.5",
+    "restify": "^4.0.4"
+  }
 }
