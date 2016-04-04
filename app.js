@@ -2,9 +2,9 @@ var restify = require('restify');
 var builder = require('botbuilder');
 
 var server = restify.createServer();
+var piBot = new builder.BotConnectorBot();
 
-var  piBot = new builder.BotConnectorBot();
- piBot.add('/', new builder.CommandDialog()
+piBot.add('/', new builder.CommandDialog()
   .matches('^set name', builder.DialogAction.beginDialog('/profile'))
   .matches('^quit', builder.DialogAction.endDialog())
   .onDefault(function (session) {
@@ -15,7 +15,7 @@ var  piBot = new builder.BotConnectorBot();
     }
   }));
 
- piBot.add('/profile', [
+piBot.add('/profile', [
   function (session) {
     if (session.userData.name) {
       builder.Prompts.text(session, 'What would you like to change it to?');
