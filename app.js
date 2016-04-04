@@ -31,9 +31,16 @@ piBot.add('/profile', [
 
 ]);
 
+function respond(req, res, next) {
+  res.send('hello ' + req.params.name);
+  next();
+}
+
+server.get('/hello/:name', respond);
+
 server.use(piBot.verifyBotFramework({ appId: 'you id', appSecret: 'your secret' }));
 server.post('/v1/messages',  piBot.listen());
 
 server.listen(8080, function () {
-  console.log('%s listening to %s', server.name, server.url);
+  console.log('%s listening at %s', server.name, server.url);
 });
