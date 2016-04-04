@@ -37,6 +37,7 @@ function respond(req, res, next) {
 }
 
 server.get('/hello/:name', respond);
+server.get('/hi/:name', respond);
 
 server.use(piBot.verifyBotFramework({ appId: 'you id', appSecret: 'your secret' }));
 server.post('/v1/messages',  piBot.listen());
