@@ -36,6 +36,6 @@ helloBot.add('/profile', [
 // server.use(helloBot.verifyBotFramework({ appId: 'you id', appSecret: 'your secret' }));
 server.post('/v1/messages', helloBot.listen());
 
-server.listen(8080, function () {
+server.listen(80, function () {
   console.log('%s listening to %s', server.name, server.url);
 });
