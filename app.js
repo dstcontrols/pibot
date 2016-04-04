@@ -1,11 +1,11 @@
 var restify = require('restify');
 var builder = require('botbuilder');
 
-var server = restify.createServer();
 var port = process.env.PORT || 8080;
 
-var helloBot = new builder.BotConnectorBot();
-helloBot.add('/', new builder.CommandDialog()
+// Create bot and add dialogs
+var piBot = new builder.BotConnectorBot();
+piBot.add('/', new builder.CommandDialog()
   .matches('^set name', builder.DialogAction.beginDialog('/profile'))
   .matches('^quit', builder.DialogAction.endDialog())
   .onDefault(function (session) {
@@ -17,7 +17,7 @@ helloBot.add('/', new builder.CommandDialog()
   })
 );
 
-helloBot.add('/profile', [
+piBot.add('/profile', [
   function (session) {
     if (session.userData.name) {
       builder.Prompts.text(session, 'What would you like to change it to?');
@@ -33,10 +33,9 @@ helloBot.add('/profile', [
 
 ]);
 
-// Only allow requests from the Bot Connector Service
-// server.use(helloBot.verifyBotFramework({ appId: 'you id', appSecret: 'your secret' }));
-server.post('/v1/messages', helloBot.listen());
-
+// Setup Restify Server
+var server = restify.createServer();
+server.post('/v1/messages', bot.verifyBotFramework(), bot.listen());
 server.listen(port, function () {
   console.log('%s listening to %s', server.name, server.url);
 });
