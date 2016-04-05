@@ -1,11 +1,9 @@
 var restify = require('restify');
 var builder = require('botbuilder');
 
-var port = process.env.PORT || 8080;
+var bot = new builder.BotConnectorBot();
 
-// Create bot and add dialogs
-var piBot = new builder.BotConnectorBot();
-piBot.add('/', new builder.CommandDialog()
+bot.add('/', new builder.CommandDialog()
   .matches('^set name', builder.DialogAction.beginDialog('/profile'))
   .matches('^quit', builder.DialogAction.endDialog())
   .onDefault(function (session) {
@@ -17,12 +15,12 @@ piBot.add('/', new builder.CommandDialog()
   })
 );
 
-piBot.add('/profile', [
+bot.add('/profile', [
   function (session) {
     if (session.userData.name) {
-      builder.Prompts.text(session, 'What would you like to change it to?');
+      builder.Prompts.text(session, 'What would you like me to call you instead?');
     } else {
-      builder.Prompts.text(session, 'Hi! What is your name?');
+      builder.Prompts.text(session, 'Hey there =). What\'s your name?');
     }
   },
 
@@ -33,9 +31,11 @@ piBot.add('/profile', [
 
 ]);
 
-// Setup Restify Server
+var port = process.env.PORT || 8080;
 var server = restify.createServer();
-server.post('/v1/messages', bot.verifyBotFramework(), bot.listen());
+
+server.use(bot.verifyBotFramework({ appId: 'testId', appSecret: 'testSecret' }));
+server.post('/api/messages', bot.listen());
 server.listen(port, function () {
   console.log('%s listening to %s', server.name, server.url);
 });
