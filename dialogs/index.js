@@ -1,4 +1,4 @@
-var builder = require('../../../');
+var builder = require('botbuilder');
 var prompts = require('../prompts');
 
 var luis = {
