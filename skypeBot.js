@@ -11,11 +11,11 @@ const index = require('./dialogs/index');
 // Initialize the BotService
 const botService = new skype.BotService({
   messaging: {
-    botId: "28:<bot’s id>",
-    serverUrl: "https://apis.skype.com",
+    botId: '28:<bot’s id>',
+    serverUrl: 'https://apis.skype.com',
     requestTimeout: 15000,
-    appId: process.env.APP_ID,
-    appSecret: process.env.APP_SECRET,
+    appId: 'testId',
+    appSecret: 'testSecret',
   },
 });
 
@@ -25,7 +25,7 @@ bot.add('/', index);
 
 // Setup Restify Server
 const server = restify.createServer();
-server.post('/v1/chat', skype.messagingHandler(botService));
+server.post('/api/chat', skype.messagingHandler(botService));
 server.listen(process.env.PORT || 8080, function () {
-   console.log('%s listening to %s', server.name, server.url);
+  console.log('%s listening to %s', server.name, server.url);
 });

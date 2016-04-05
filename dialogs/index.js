@@ -12,6 +12,8 @@ var model = process.env.model || luis.api + '?id=' + luis.id + '&subscription-ke
 var dialog = new builder.LuisDialog(model);
 module.exports = dialog;
 
+console.log(model);
+
 /** Answer users help requests. We can use a DialogAction to send a static message. */
 dialog.on('Help', builder.DialogAction.send(prompts.helpMessage));
 
