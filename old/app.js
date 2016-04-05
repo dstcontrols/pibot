@@ -26,6 +26,7 @@ bot.add('/profile', [
 
   function (session, results) {
     session.userData.name = results.response;
+    session.send('Got it, %s.', results.response);
     session.endDialog();
   },
 
