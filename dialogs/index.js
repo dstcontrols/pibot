@@ -8,14 +8,17 @@ var luis = {
 };
 
 /** Return a LuisDialog that points at our model and then add intent handlers. */
-var model = process.env.model || luis.api + '?id=' + luis.id + '&subscription-key=' + luis.subscription + '&q=';
+var luisModel = luis.api + '?id=' + luis.id + '&subscription-key=' + luis.subscription;
+var model = process.env.model || luisModel;
 var dialog = new builder.LuisDialog(model);
 module.exports = dialog;
 
 console.log(model);
 
 /** Answer users help requests. We can use a DialogAction to send a static message. */
-dialog.on('Help', builder.DialogAction.send(prompts.helpMessage));
+dialog.on('Help', builder.DialogAction.send('you need help?'));
+
+// dialog.on('Help', builder.DialogAction.send(prompts.helpMessage));
 
 /** Prompts a user for the title of the task and saves it.  */
 dialog.on('SaveTask', [

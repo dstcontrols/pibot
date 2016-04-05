@@ -10,6 +10,6 @@ module.exports = {
   listTaskList: 'Tasks\n%s',
   listTaskItem: '%(index)d. %(task)s\n',
   listNoTasks: 'You have no tasks.',
-  finishTaskMissing: "Which task would you like to delete?",
-  finishTaskDone: "Removed '%(task)s' from your task list."
+  finishTaskMissing: 'Which task would you like to delete?',
+  finishTaskDone: "Removed '%(task)s' from your task list.",
 };
