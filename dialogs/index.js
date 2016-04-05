@@ -3,12 +3,12 @@ var prompts = require('../prompts');
 
 var luis = {
   api: 'https://api.projectoxford.ai/luis/v1/application',
-  appId: '597f02c4-0aac-47e2-a64c-790c54f43e98',
-  appKey: '6d0966209c6e4f6b835ce34492f3e6d9',
+  id: '449a0549-16d6-44f2-bf33-80e74fc17316',
+  subscription: '5b2ac7b0125140c794d6aa6385073d5f',
 };
 
 /** Return a LuisDialog that points at our model and then add intent handlers. */
-var model = process.env.model || luis.api + '?id=' + luis.appId + '&subscription-key=' + 'luis.appKey' + '&q=';
+var model = process.env.model || luis.api + '?id=' + luis.id + '&subscription-key=' + luis.subscription + '&q=';
 var dialog = new builder.LuisDialog(model);
 module.exports = dialog;
 
