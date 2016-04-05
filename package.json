@@ -1,23 +1,25 @@
 {
-  "name": "pibot",
+  "name": "pibot-framework",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A bot for managing a users to-do list. Created tasks are saved to the session.userData object so are tracked per/user. For Slack you could easily change this to the session.channelData object and create a team wide task list.",
+  "main": "app.js",
+  "dependencies": {
+    "botbuilder": "^0.6.5",
+    "botkit": "0.0.15",
+    "restify": "^4.0.4"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dstcontrols/pibot.git"
+    "url": "git+https://github.com/dstcontrols/pibot-framework.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dstcontrols/pibot/issues"
+    "url": "https://github.com/dstcontrols/pibot-framework/issues"
   },
-  "homepage": "https://github.com/dstcontrols/pibot#readme",
-  "dependencies": {
-    "botbuilder": "^0.6.5",
-    "restify": "^4.0.4"
-  }
+  "homepage": "https://github.com/dstcontrols/pibot-framework#readme"
 }
