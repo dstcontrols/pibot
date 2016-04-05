@@ -1,8 +1,14 @@
 var builder = require('../../../');
 var prompts = require('../prompts');
 
+var luis = {
+  api: 'https://api.projectoxford.ai/luis/v1/application',
+  appId: '597f02c4-0aac-47e2-a64c-790c54f43e98',
+  appKey: '6d0966209c6e4f6b835ce34492f3e6d9',
+};
+
 /** Return a LuisDialog that points at our model and then add intent handlers. */
-var model = process.env.model || 'https://api.projectoxford.ai/luis/v1/application?id=597f02c4-0aac-47e2-a64c-790c54f43e98&subscription-key=6d0966209c6e4f6b835ce34492f3e6d9&q=';
+var model = process.env.model || luis.api + '?id=' + luis.appId + '&subscription-key=' + 'luis.appKey' + '&q=';
 var dialog = new builder.LuisDialog(model);
 module.exports = dialog;
 
